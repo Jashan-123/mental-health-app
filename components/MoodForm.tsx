@@ -1,7 +1,7 @@
 // components/ui/MoodForm.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MOOD_OPTIONS = ["Happy", "Calm", "Anxious", "Sad", "Grateful"];
 
@@ -12,6 +12,16 @@ type Props = {
 export default function MoodForm({ onSubmit }: Props) {
   const [selectedMood, setSelectedMood] = useState("");
   const [note, setNote] = useState("");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("name");
+    if (savedName) {
+      setName(savedName);
+    } else {
+      setName("Bud");
+    }
+  });
 
   const handleSubmit = () => {
     if (!selectedMood) return;
@@ -23,7 +33,7 @@ export default function MoodForm({ onSubmit }: Props) {
   return (
     <div className="bg-white rounded-2xl p-6 mb-8">
       <h2 className="text-lg font-semibold text-gray-800 mb-4">
-        How are you feeling?
+        How are you feeling? {name}!
       </h2>
       <div className="flex gap-3 flex-wrap">
         {MOOD_OPTIONS.map((m) => (

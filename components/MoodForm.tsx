@@ -21,7 +21,7 @@ export default function MoodForm({ onSubmit }: Props) {
     } else {
       setName("Bud");
     }
-  });
+  }, []);
 
   const handleSubmit = () => {
     if (!selectedMood) return;

@@ -55,7 +55,7 @@ export default function MoodForm({ onSubmit }: Props) {
         placeholder="Add a note (optional)"
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        className="mt-4 w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-indigo-400"
+        className="mt-4 w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-600 outline-none focus:border-indigo-400"
       />
       <button
         onClick={handleSubmit}

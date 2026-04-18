@@ -1,12 +1,6 @@
-import { moodColors, moodToEmoji } from "@/lib/utilities";
+import { moodColors, moodToEmoji } from "@/lib/utilities.js";
 
-interface MoodCardProps {
-  date: string;
-  mood: string;
-  note: string;
-}
-
-function MoodCard({ date, mood, note }: MoodCardProps) {
+function MoodCard({ date, mood, note }) {
   const emoji = moodToEmoji(mood);
   const moodClass = moodColors[mood] ?? "bg-gray-50 border-gray-200";
 

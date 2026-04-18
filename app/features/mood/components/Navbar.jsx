@@ -1,4 +1,5 @@
 import Link from "next/dist/client/link";
+
 const Navbar = () => {
   return (
     <nav style={{ padding: "1rem", borderBottom: "1px solid #ccc" }}>

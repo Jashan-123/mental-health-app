@@ -1,7 +1,7 @@
 "use client";
-import MoodForm from "@/app/features/mood/components/MoodForm";
-import MoodCard from "@/app/features/mood/components/MoodCard";
-import useMood from "@/app/features/mood/hooks/useMood";
+import MoodForm from "@/app/features/mood/components/MoodForm.jsx";
+import MoodCard from "@/app/features/mood/components/MoodCard.jsx";
+import useMood from "@/app/features/mood/hooks/useMood.js";
 
 export default function DashboardPage() {
   const { moods, addMood } = useMood();

@@ -1,27 +1,19 @@
-// components/ui/MoodForm.tsx
+// components/ui/MoodForm.jsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useLocalStorageSync } from "../hooks/useLocalStorageSync.js";
 
 const MOOD_OPTIONS = ["Happy", "Calm", "Anxious", "Sad", "Grateful"];
 
-type Props = {
-  onSubmit: (mood: string, note: string) => void;
-};
-
-export default function MoodForm({ onSubmit }: Props) {
+export default function MoodForm({ onSubmit }) {
   const [selectedMood, setSelectedMood] = useState("");
   const [note, setNote] = useState("");
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    if (savedName) {
-      setName(savedName);
-    } else {
-      setName("Bud");
-    }
-  }, []);
+  const {
+    value: name,
+    updateValue: setName,
+    isLoaded,
+  } = useLocalStorageSync("name", "Bud");
 
   const handleSubmit = () => {
     if (!selectedMood) return;

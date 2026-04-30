@@ -13,11 +13,7 @@ export function useLocalStorageSync(key, initialValue) {
         try {
           setValue(JSON.parse(stored));
         } catch (parseError) {
-          // If JSON parsing fails, use the stored value as-is
-          console.warn(
-            `Could not parse JSON for key "${key}", using raw value:`,
-            parseError.message,
-          );
+          // If JSON parsing fails, use the stored value as-is (legacy data)
           setValue(stored);
         }
       }
@@ -35,11 +31,7 @@ export function useLocalStorageSync(key, initialValue) {
           try {
             setValue(JSON.parse(event.newValue));
           } catch (parseError) {
-            // If JSON parsing fails, use the value as-is
-            console.warn(
-              `Could not parse JSON for key "${key}", using raw value:`,
-              parseError.message,
-            );
+            // If JSON parsing fails, use the value as-is (legacy data)
             setValue(event.newValue);
           }
         } catch (error) {

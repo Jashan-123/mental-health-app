@@ -1,22 +1,21 @@
 {
-  "name": "mental-health-app",
-  "version": "0.1.0",
+  "name": "mental-health-app-monorepo",
+  "version": "1.0.0",
+  "description": "Mental Health App - Full Stack Application",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=backend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "build": "npm run build --workspace=frontend && npm run build --workspace=backend",
+    "start": "concurrently \"npm start --workspace=frontend\" \"npm start --workspace=backend\"",
+    "lint": "npm run lint --workspace=frontend && npm run lint --workspace=backend"
   },
-  "dependencies": {
-    "next": "16.2.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
-  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.1",
-    "tailwindcss": "^4"
+    "concurrently": "^9.0.1"
   }
 }
